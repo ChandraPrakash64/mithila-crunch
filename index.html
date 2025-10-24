@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithila Crunch - Authentic Traditional Snacks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-cookie-bite"></i> Mithila Crunch</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile menu toggle -->
+            <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="nav-actions">
+                <!-- Login and Cart removed per request; keep a contact link for quick access -->
+                <a href="#contact" class="contact-link" style="color:white; text-decoration:none; font-weight:600;"><i class="fas fa-phone"></i> Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile dropdown menu (appears on small screens) -->
+    <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-inner">
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close menu">&times;</button>
+            <ul>
+                <li><a href="#home" class="mobile-link">Home</a></li>
+                <li><a href="#products" class="mobile-link">Products</a></li>
+                <li><a href="#about" class="mobile-link">About</a></li>
+                <li><a href="#contact" class="mobile-link">Contact</a></li>
+                <li><a href="#contact" class="mobile-link"><i class="fas fa-phone"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>🍪 स्वाद बढ़ाये, साथ खाएं 🍪</h1>
+            <p class="hero-subtitle">In every bite, A taste of home.</p>
+            <div class="hero-features">
+                <span class="feature-badge">No Palm Oil</span>
+                <span class="feature-badge">No Dalda</span>
+                <span class="feature-badge">No Maida</span>
+                <span class="feature-badge">Handmade</span>
+            </div>
+            <button class="cta-btn">Shop Now</button>
+        </div>
+        <div class="hero-image">
+            <img data-parallax data-speed="0.14" data-x="0.02" class="parallax-layer" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" alt="Traditional Snacks" />
+        </div>
+    </section>
+
+    <!-- Featured Product -->
+    <section class="featured-product">
+        <div class="container">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="main-product-image" data-parallax data-speed="0.08" class="parallax-layer" src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600" alt="Gud Thekua">
+                </div>
+                <div class="thumbnail-images">
+                    <img class="thumbnail active" data-parallax data-speed="0.03" src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=150" alt="Thekua 1">
+                    <img class="thumbnail" data-parallax data-speed="0.03" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=150" alt="Thekua 2">
+                    <img class="thumbnail" data-parallax data-speed="0.03" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=150" alt="Thekua 3">
+                    <img class="thumbnail" data-parallax data-speed="0.03" src="https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=150" alt="Thekua 4">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h2>GUD THEKUA (Chhath Puja) | Aata & Jaggery</h2>
+                <!-- Rating removed as requested -->
+                
+                <div class="price">
+                    <span class="sale-price">₹369.00</span>
+                    <span class="regular-price">₹450.00</span>
+                    <span class="discount">18% OFF</span>
+                </div>
+                
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Net Weight:</label>
+                        <select id="weight-select">
+                            <option value="400g">400g</option>
+                            <option value="800g">800g</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label>Type:</label>
+                        <select id="type-select">
+                            <option value="crispy">Crispy</option>
+                            <option value="soft">Soft</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Replaced quantity/add-to-cart with a Buy Now button that redirects to the order form -->
+                <div style="margin: 1.5rem 0;">
+                    <button class="add-to-cart-btn buy-now-btn featured" id="buy-now" data-name="GUD THEKUA (Chhath Puja)" data-baseprice="369">BUY NOW</button>
+                </div>
+                
+                <div class="delivery-info">
+                    <p><i class="fas fa-truck"></i> 92% orders are delivered within 3 days</p>
+                    <p><i class="fas fa-percentage"></i> Extra discount on online payment</p>
+                    <p><i class="fas fa-shield-alt"></i> Taxes included. Shipping calculated at checkout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title stagger">😋 साथ खाएं, स्वाद बढ़ाएं 😋</h2>
+            
+            <div class="products-grid">
+                <div class="product-card stagger">
+                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400" alt="All Item Pack">
+                    <div class="product-details">
+                        <h3>All Item Pack (Combo 4 in 1) - 400g each</h3>
+                        <div class="product-price">
+                            <span class="sale-price">₹1,199.00</span>
+                            <span class="regular-price">₹1,499.00</span>
+                        </div>
+                        <button class="product-add-btn buy-now-btn" data-name="All Item Pack (Combo 4 in 1) - 400g each" data-price="1199">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card stagger">
+                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Gud Thekua & Namak Pare">
+                    <div class="product-details">
+                        <h3>Gud Thekua & Namak Pare Aata (Combo) - 400g each</h3>
+                        <div class="product-price">
+                            <span class="sale-price">₹699.00</span>
+                            <span class="regular-price">₹850.00</span>
+                        </div>
+                        <button class="product-add-btn buy-now-btn" data-name="Gud Thekua & Namak Pare Aata (Combo) - 400g each" data-price="699">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card stagger">
+                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400" alt="Chinni & Gud Thekua">
+                    <div class="product-details">
+                        <h3>Chinni & Gud Thekua (Combo) - 400g each</h3>
+                        <div class="product-price">
+                            <span class="sale-price">₹699.00</span>
+                            <span class="regular-price">₹850.00</span>
+                        </div>
+                        <button class="product-add-btn buy-now-btn" data-name="Chinni & Gud Thekua (Combo) - 400g each" data-price="699">Buy Now</button>
+                    </div>
+                </div>
+                
+                <div class="product-card stagger">
+                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=400" alt="Chinni Thekua & Namak Pare">
+                    <div class="product-details">
+                        <h3>Chinni Thekua & Namak Pare Aata (Combo) - 400g each</h3>
+                        <div class="product-price">
+                            <span class="sale-price">₹699.00</span>
+                            <span class="regular-price">₹710.00</span>
+                        </div>
+                        <button class="product-add-btn buy-now-btn" data-name="Chinni Thekua & Namak Pare Aata (Combo) - 400g each" data-price="699">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Awesome experience. Thank you!"</p>
+                    <div class="reviewer">- Priyosom Mishra</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Amazing taste and quality"</p>
+                    <div class="reviewer">- Ritika Rai</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"एक अच्छी स्वाद, बहुत बढ़िया क्वालिटी। 🙏"</p>
+                    <div class="reviewer">- Upendra Kumar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Mithila Crunch</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>At Mithila Crunch, we bring you the authentic taste of traditional Mithila sweets and snacks. Our products are handmade with love, using only the finest ingredients without any harmful additives.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> No Palm Oil</li>
+                        <li><i class="fas fa-check"></i> No Dalda</li>
+                        <li><i class="fas fa-check"></i> No Maida</li>
+                        <li><i class="fas fa-check"></i> 100% Handmade</li>
+                        <li><i class="fas fa-check"></i> Traditional Recipes</li>
+                        <li><i class="fas fa-check"></i> Fresh Ingredients</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500" alt="Traditional Kitchen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> hello@mithilacrunch.shop</p>
+                    <p><i class="fas fa-phone"></i> +91 9035068337</p>
+                </div>
+                
+                <!-- Quick Links section removed as requested -->
+                
+                <div class="footer-section">
+                    <h3>Mithila Crunch</h3>
+                    <p>FSSAI LIC No: 11224998000013</p>
+                    <p>Authentic Traditional Snacks</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025, Mithila Crunch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Shopping Cart</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <strong>Total: ₹<span id="cart-total">0</span></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="clear-cart">Clear Cart</button>
+                <button class="btn-primary" id="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
