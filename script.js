@@ -2,6 +2,10 @@
 let cart = [];
 let quantity = 1;
 
+// Global flag to disable site animations (parallax, tilt, stagger, RAF loops)
+// Set to true to completely skip JS-based motion while keeping core UX.
+const DISABLE_SITE_ANIMATIONS = true;
+
 // DOM elements
 const quantityDisplay = document.getElementById('quantity');
 const cartCount = document.getElementById('cart-count');
@@ -450,8 +454,58 @@ function loadCartFromStorage() {
 
 // Scroll animations
 function initializeScrollAnimations() {
+    // If site animations are disabled, we skip the parallax/tilt/raf/stagger
+    // behavior but still reveal content and initialize the mobile menu so
+    // core UX features remain functional.
     const selectorList = '.product-card, .review-card, .about-content, .hero-content, .hero-image, .featured-product, .products-section, .about-section, .footer';
     const animateElements = document.querySelectorAll(selectorList);
+
+    if (typeof DISABLE_SITE_ANIMATIONS !== 'undefined' && DISABLE_SITE_ANIMATIONS) {
+        // Make everything visible (no stagger/transition) so content is immediately present
+        animateElements.forEach(el => el.classList.add('visible'));
+
+        // Ensure thumbnails / main images are shown without animation (gallery already handles src swapping)
+        document.querySelectorAll('img').forEach(i => i.style.willChange = 'auto');
+
+        // Initialize minimal mobile menu behavior (copied from below) so menu still works
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        function openMobileMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.add('open');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.remove('open');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = 'auto';
+        }
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                const isOpen = mobileMenu.classList.contains('open');
+                if (isOpen) closeMobileMenu(); else openMobileMenu();
+            });
+        }
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+        }
+        document.querySelectorAll('.mobile-menu .mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+
+        // Skip the rest of animation setup
+        return;
+    }
 
     const observerOptions = {
         threshold: 0.08,

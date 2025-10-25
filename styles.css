@@ -169,10 +169,10 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #FFF8DC, #FFFACD, #F5DEB3);
-    padding: 3rem 0; /* slightly reduced vertical space */
+    padding: 2.5rem 0; /* slightly reduced vertical space */
     display: flex;
     align-items: center;
-    min-height: 520px; /* slightly reduced */
+    min-height: 420px; /* reduced to make hero smaller */
 }
 
 .hero-content {
@@ -181,11 +181,11 @@ body {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #8B4513;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(139,69,19,0.3);
+    text-shadow: 2px 2px 4px rgba(139,69,19,0.25);
 }
 
 .hero-subtitle {
@@ -244,13 +244,13 @@ body {
 
 /* Logo used in hero (replace cake photo) */
 .hero-image .logo-hero {
-    width: 420px; /* desktop target width */
+    width: 260px; /* smaller desktop target width */
     max-width: 100%;
     height: auto;
     object-fit: contain;
     background: transparent;
-    border-radius: 20px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.10);
 }
 
 /* Featured Product Section */
@@ -807,15 +807,18 @@ body {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .nav-menu ul {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
     }
-    
+
+    /* On mobile, show the hero image (logo) above the title/subtitle.
+       The HTML keeps hero-content then hero-image in source order; using
+       column-reverse flips the vertical stacking so the logo appears first. */
     .hero {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
     
@@ -930,6 +933,32 @@ body {
     .products-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Disable image-related animations and parallax on mobile to keep the experience static
+   and match the requested mobile design (no moving photos). This targets
+   parallax layers, hover transforms, animated transitions for product images,
+   thumbnails, hero logo, and any image-specific keyframe animations. */
+@media (max-width: 768px) {
+    /* Stop background/hero gradient animation for mobile to avoid distracting movement */
+    .hero { animation: none !important; }
+
+    /* Disable parallax and transform-based animations on images */
+    img, .parallax-layer, .hero-image img, .product-card img, .about-image img, .thumbnail, .thumbnail.active {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        will-change: auto !important;
+    }
+
+    /* Prevent card hover lifts and image scale on mobile (touch devices) */
+    .product-card, .product-card:hover, .product-card:hover img, .product-card img {
+        transform: none !important;
+        box-shadow: 0 6px 18px rgba(139,69,19,0.08) !important;
+    }
+
+    /* Remove subtle float on hero image */
+    .hero-image img { box-shadow: 0 8px 22px rgba(0,0,0,0.08) !important; }
 }
 
 @media (max-width: 480px) {
@@ -1239,3 +1268,68 @@ button:focus, a:focus {
 @media (max-width: 768px) {
     .nutrition-ingredients { grid-template-columns: 1fr; }
 }
+
+/* ======================================================================
+   Global override: disable Samsung-like animations and heavy motion
+   The site previously added parallax, staggered reveals, hover tilts and
+   floating effects to emulate Samsung-like motion. The user requested
+   these be removed. The rules below neutralize transforms, transitions,
+   animations and strong shadows for the affected elements site-wide.
+   ====================================================================== */
+
+/* Turn off hero gradient animation */
+.hero { animation: none !important; }
+
+/* Neutralize parallax layers, images and card transforms */
+.parallax-layer,
+.stagger,
+.section-animate,
+.section-mask,
+.product-card,
+.product-card img,
+.hero-image img,
+.about-image img,
+.thumbnail,
+.thumbnail.active,
+.btn-pulse,
+.cta-btn,
+.product-card::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
+    box-shadow: none !important;
+}
+
+/* Remove hover/active lifts on cards and buttons */
+.product-card:hover, .product-card:active, .product-card:focus {
+    transform: none !important;
+    box-shadow: 0 6px 18px rgba(139,69,19,0.08) !important;
+}
+
+/* Prevent CTA pulse visuals */
+.pulse-active, .btn-pulse::after { opacity: 0 !important; transform: none !important; }
+
+/* Ensure any progress keyframes used in JS notifications are still allowed,
+   but avoid persistent animated UI elsewhere. (Prefers-reduced-motion still honored.) */
+
+/* Make images inherit their parent's background so any transparent parts or
+   padding visually match the container. This helps blend images into colored
+   card or hero backgrounds. Use `background: inherit` and ensure images
+   keep their object-fit and sizing. */
+img {
+    background: inherit !important;
+}
+
+.hero-image img,
+.product-card img,
+.about-image img,
+.thumbnail {
+    background: inherit !important;
+    /* keep images neatly clipped to card radius if parent has rounding */
+    border-radius: inherit;
+}
+
+/* If you prefer images to explicitly match a color, for example the
+   product card background (#FFFEF7), replace `background: inherit` with
+   `background: #FFFEF7` on the selectors above. */
