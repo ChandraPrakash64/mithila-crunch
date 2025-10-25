@@ -604,9 +604,12 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    /* Use a predictable two-column layout on wider screens: left column grows, right column stays compact */
+    grid-template-columns: 1fr minmax(220px, 360px);
+    gap: 3rem; /* spacing between columns */
     margin-bottom: 2rem;
+    justify-content: space-between; /* push sections to edges when grid allows */
+    align-items: start;
 }
 
 .footer-section h3 {
@@ -615,8 +618,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* Footer column alignment: left / center / right on wide screens.
-   On smaller screens everything centers (handled by existing media queries). */
+
 .footer-content {
     align-items: start; /* ensure headings align at top */
 }
@@ -625,21 +627,17 @@ body {
     flex-direction: column;
     justify-content: flex-start;
 }
-.footer-section:nth-child(1) {
+.footer-section:first-child {
     text-align: left;
     align-items: flex-start;
 }
-.footer-section:nth-child(2) {
-    text-align: center;
-    align-items: center;
-}
-.footer-section:nth-child(3) {
+.footer-section:last-child {
     text-align: right;
     align-items: flex-end;
 }
 
 /* Make social links right-aligned in the right column */
-.footer-section:nth-child(3) .social-links a {
+.footer-section:last-child .social-links a {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
