@@ -95,12 +95,24 @@ function initializeEventListeners() {
         });
     });
 
-    // CTA button scroll to products
-    document.querySelector('.cta-btn').addEventListener('click', () => {
-        document.getElementById('products').scrollIntoView({
-            behavior: 'smooth'
+    // CTA button scroll to the Buy Now / featured product area
+    const shopNowBtn = document.getElementById('shop-now-cta') || document.querySelector('.cta-btn');
+    if (shopNowBtn) {
+        shopNowBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const buyNowBtn = document.getElementById('buy-now');
+            if (buyNowBtn) {
+                buyNowBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // briefly highlight the buy button to guide the user
+                buyNowBtn.classList.add('focus-pulse');
+                setTimeout(() => buyNowBtn.classList.remove('focus-pulse'), 1400);
+                return;
+            }
+            // fallback: scroll to featured product section
+            const featured = document.querySelector('.featured-product') || document.getElementById('products');
+            if (featured) featured.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-    });
+    }
 
     // Modal close on outside click
     window.addEventListener('click', (e) => {

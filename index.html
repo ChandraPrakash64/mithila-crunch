@@ -46,13 +46,47 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Straight from Maa's Kitchen</h1>
-            <p class="hero-subtitle">Taste, Tradition and Togetherness</p>
-            <!-- hero badges removed per request -->
-            <button class="cta-btn">Shop Now</button>
-        </div>
+            <div class="hero-left">
+                <div class="hero-kicker">Taste of Mithila</div>
+                <p class="hero-subtitle">Taste, Tradition and Togetherness</p>
+                <p class="hero-blurb">Handcrafted thekua using time-honoured recipes — warm, wholesome and made with love. Perfect for festivals, gifting, and sharing around the family table.</p>
+
+                <div class="hero-cta-wrap">
+                    <button id="shop-now-cta" class="cta-btn">Shop Now</button>
+                </div>
+
+                <ul class="hero-features-small" aria-hidden="true">
+                    <li>Small-batch • Handmade</li>
+                    <li>Natural ingredients • No preservatives</li>
+                </ul>
+            </div>
         <div class="hero-image">
             <img data-parallax data-speed="0.14" data-x="0.02" class="parallax-layer logo-hero" src="res/logo.png" alt="Mithila Crunch logo" />
+        </div>
+        <div class="hero-graphics" aria-hidden="true">
+            <!-- Decorative artwork for desktop only (hidden on small screens) -->
+            <!-- Right-side soft sun + wheat motif -->
+            <svg class="hero-art hero-art-right" width="420" height="420" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+                <defs>
+                    <linearGradient id="g1" x1="0" x2="1">
+                        <stop offset="0" stop-color="#F4A460"/>
+                        <stop offset="1" stop-color="#D2691E"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="320" cy="100" r="90" fill="url(#g1)" opacity="0.12"/>
+                <g fill="#D2691E" opacity="0.12" transform="translate(240,40) scale(1.2)">
+                    <path d="M-4 0c2 6 9 18 12 22 3-4 10-16 12-22 0-6-12-6-24 0z"/>
+                    <path d="M10 6c1 5 6 14 8 18 2-4 7-13 8-18 0-5-8-5-16 0z" transform="translate(10,10)"/>
+                    <path d="M-12 18c2 5 8 13 10 16 2-3 8-11 10-16 0-4-9-4-20 0z" transform="translate(-8,22)"/>
+                </g>
+            </svg>
+
+            <!-- Left-side soft wave background -->
+            <svg class="hero-art hero-art-left" width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+                <g fill="#8B4513" opacity="0.08">
+                    <path d="M40 200 C80 120, 180 120, 220 200 L220 240 C180 160, 80 160, 40 240 Z"/>
+                </g>
+            </svg>
         </div>
     </section>
 
@@ -109,62 +143,7 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products-section">
-        <div class="container">
-            <h2 class="section-title stagger">😋 साथ खाएं, स्वाद बढ़ाएं 😋</h2>
-            
-            <div class="products-grid">
-                <div class="product-card stagger">
-                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400" alt="All Item Pack">
-                    <div class="product-details">
-                        <h3>All Item Pack (Combo 4 in 1) - 400g each</h3>
-                        <div class="product-price">
-                            <span class="sale-price">₹1,199.00</span>
-                            <span class="regular-price">₹1,499.00</span>
-                        </div>
-                        <button class="product-add-btn buy-now-btn" data-name="All Item Pack (Combo 4 in 1) - 400g each" data-price="1199">Buy Now</button>
-                    </div>
-                </div>
-                
-                <div class="product-card stagger">
-                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Gud Thekua & Namak Pare">
-                    <div class="product-details">
-                        <h3>Gud Thekua & Namak Pare Aata (Combo) - 400g each</h3>
-                        <div class="product-price">
-                            <span class="sale-price">₹699.00</span>
-                            <span class="regular-price">₹850.00</span>
-                        </div>
-                        <button class="product-add-btn buy-now-btn" data-name="Gud Thekua & Namak Pare Aata (Combo) - 400g each" data-price="699">Buy Now</button>
-                    </div>
-                </div>
-                
-                <div class="product-card stagger">
-                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400" alt="Chinni & Gud Thekua">
-                    <div class="product-details">
-                        <h3>Chinni & Gud Thekua (Combo) - 400g each</h3>
-                        <div class="product-price">
-                            <span class="sale-price">₹699.00</span>
-                            <span class="regular-price">₹850.00</span>
-                        </div>
-                        <button class="product-add-btn buy-now-btn" data-name="Chinni & Gud Thekua (Combo) - 400g each" data-price="699">Buy Now</button>
-                    </div>
-                </div>
-                
-                <div class="product-card stagger">
-                    <img data-parallax data-speed="0.06" src="https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=400" alt="Chinni Thekua & Namak Pare">
-                    <div class="product-details">
-                        <h3>Chinni Thekua & Namak Pare Aata (Combo) - 400g each</h3>
-                        <div class="product-price">
-                            <span class="sale-price">₹699.00</span>
-                            <span class="regular-price">₹710.00</span>
-                        </div>
-                        <button class="product-add-btn buy-now-btn" data-name="Chinni Thekua & Namak Pare Aata (Combo) - 400g each" data-price="699">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Products section removed as requested -->
 
     <!-- Reviews Section -->
     <section class="reviews-section">

@@ -177,7 +177,9 @@ body {
 
 .hero-content {
     flex: 1;
-    padding: 2rem;
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
 }
 
 .hero h1 {
@@ -189,10 +191,10 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 2rem;
-    font-style: italic;
+    font-size: 1.6rem;
+    color: #5a3824;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .hero-features {
@@ -216,17 +218,17 @@ body {
     background: linear-gradient(135deg, #8B4513, #D2691E);
     color: white;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 1.05rem 2.2rem;
+    font-size: 1.12rem;
     border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(139,69,19,0.4);
+    transition: all 0.18s ease;
+    box-shadow: 0 6px 20px rgba(139,69,19,0.28);
 }
 
 .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139,69,19,0.5);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 30px rgba(139,69,19,0.32);
     background: linear-gradient(135deg, #A0522D, #F4A460);
 }
 
@@ -242,15 +244,115 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* Decorative hero artwork (desktop only) */
+.hero {
+    position: relative; /* allow absolutely positioned artwork */
+    overflow: visible;
+}
+.hero-graphics {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0; /* sit behind main content */
+}
+.hero-graphics .hero-art {
+    position: absolute;
+    transform-origin: center;
+    transition: transform 0.6s ease;
+    opacity: 0.14; /* subtle so it remains decorative */
+    filter: blur(0.4px);
+}
+.hero-art-right {
+    right: 6%;
+    top: 6%;
+    width: 420px;
+    height: auto;
+}
+.hero-art-left {
+    left: 4%;
+    bottom: 2%;
+    width: 320px;
+    height: auto;
+    transform: rotate(-6deg);
+}
+.hero-content, .hero-image {
+    position: relative; /* keep content above the artwork */
+    z-index: 2;
+}
+
+/* Hide artwork on smaller screens (mobile) */
+@media (max-width: 900px) {
+    .hero-graphics { display: none; }
+    .hero { padding: 2rem 0; min-height: 360px; }
+    .hero-content { padding: 1.2rem; }
+    .hero-left { text-align: center; max-width: 100%; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .hero-blurb { display: none; }
+    .hero-image .logo-hero { width: 220px; }
+    .hero-cta-wrap { justify-content: center; flex-direction: column; gap: 0.6rem; }
+    .secondary-link { display: inline-block; }
+}
+
+/* Left column specifics */
+.hero-left {
+    max-width: 560px;
+}
+
+.hero-kicker {
+    font-size: 0.9rem;
+    color: #8B4513;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+    opacity: 0.9;
+}
+
+.hero-blurb {
+    font-size: 1rem;
+    color: #5b4b3f;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+    max-width: 56ch;
+}
+
+.hero-cta-wrap {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.secondary-link {
+    color: #8B4513;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+}
+
+.hero-features-small {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.6rem;
+    list-style: none;
+    color: #6b4f3a;
+    font-size: 0.95rem;
+}
+.hero-features-small li {
+    background: rgba(210,105,30,0.06);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+}
+
 /* Logo used in hero (replace cake photo) */
 .hero-image .logo-hero {
-    width: 260px; /* smaller desktop target width */
+    width: 360px; /* larger logo on desktop */
     max-width: 100%;
     height: auto;
     object-fit: contain;
     background: transparent;
-    border-radius: 12px;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.10);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.07);
 }
 
 /* Featured Product Section */
@@ -413,6 +515,13 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(139,69,19,0.4);
     background: linear-gradient(135deg, #A0522D, #F4A460);
+}
+
+/* brief pulsing focus to guide user when CTA scrolls to buy button */
+.focus-pulse {
+    box-shadow: 0 6px 24px rgba(210,105,30,0.35), 0 0 0 6px rgba(210,105,30,0.08) !important;
+    transform: translateY(-1px) !important;
+    transition: box-shadow 0.3s ease, transform 0.2s ease !important;
 }
 
 .delivery-info {
