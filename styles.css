@@ -169,10 +169,10 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #FFF8DC, #FFFACD, #F5DEB3);
-    padding: 4rem 0;
+    padding: 3rem 0; /* slightly reduced vertical space */
     display: flex;
     align-items: center;
-    min-height: 600px;
+    min-height: 520px; /* slightly reduced */
 }
 
 .hero-content {
@@ -242,9 +242,20 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* Logo used in hero (replace cake photo) */
+.hero-image .logo-hero {
+    width: 420px; /* desktop target width */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+
 /* Featured Product Section */
 .featured-product {
-    padding: 4rem 0;
+    padding: 2rem 0; /* reduced vertical padding to make section smaller */
     background: #fff;
 }
 
@@ -263,10 +274,10 @@ body {
 
 .main-image img {
     width: 100%;
-    height: 400px;
+    height: 300px; /* reduced height */
     object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .thumbnail-images {
@@ -885,6 +896,11 @@ body {
         width: 100%;
         border-radius: 14px;
     }
+
+    .hero-image .logo-hero {
+        width: 320px;
+        max-width: 80%;
+    }
     .featured-product .container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -956,6 +972,7 @@ body {
     .nav-actions .contact-link {
         font-size: 0.95rem;
     }
+    .hero-image .logo-hero { width: 220px; max-width: 70%; }
 }
 
 /* Center footer contents and icons on small screens */
@@ -1186,3 +1203,39 @@ button:focus, a:focus {
 
 /* minor performance hint: animate transform/opacity only */
 .fade-in-up, .fade-in-stagger, .section-animate, .stagger { will-change: transform, opacity; }
+
+/* Styles for product label / nutrition area inserted from image */
+.label-content {
+    margin-top: 1rem;
+    background: linear-gradient(180deg, #fff, #fffaf2);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.label-desc {
+    color: #4b3a2a;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+.label-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.8rem 0;
+    color: #333;
+}
+.label-meta li { margin-bottom: 0.45rem; }
+.nutrition-ingredients {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.8rem;
+}
+.nutrition-ingredients h4 { margin: 0 0 0.4rem 0; color: var(--accent-1); }
+.ingredients p { color: #444; margin: 0 0 0.6rem 0; }
+.nutrition ul { list-style: none; padding: 0; margin: 0; color: #444; }
+.nutrition ul li { margin-bottom: 0.35rem; }
+.mf { margin-top: 0.6rem; font-size: 0.95rem; color: #666; }
+
+@media (max-width: 768px) {
+    .nutrition-ingredients { grid-template-columns: 1fr; }
+}
